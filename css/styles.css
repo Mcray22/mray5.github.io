@@ -1,0 +1,654 @@
+/* ========================================
+   FILE: css/styles.css
+   PURPOSE: Global stylesheet for Sword & Board B&B.
+            Handles reset, typography, layout, components, 
+            and theme (dark fantasy with neon cyan accents).
+   UPDATED: Nov 15, 2025
+   ======================================== */
+
+/* ========================================
+   RESET & BOX-SIZING
+   PURPOSE: Normalize box model and remove default margins/padding.
+   ======================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========================================
+   BODY – BASE TYPOGRAPHY & THEME
+   PURPOSE: Set default font, text color, background, and full-height layout.
+   ======================================== */
+body {
+  font-family: 'Lora', serif;
+  color: #e8dcca;                     /* Warm parchment text */
+  background: #0b0f0a;                /* Deep forest green-black */
+  min-height: 100vh;
+}
+
+/* Brighter overlay for room pages – let more of the beautiful image shine through */
+.hero::before {
+  background: rgba(11, 15, 10, 0.60);   /* was 0.75 → now 60% opacity */
+  /* some options just incase:
+     0.45 = very bright but still readable
+     0.60 = nice balanced middle ground
+     0.50 = my personal favorite for fantasy vibe */
+}
+
+/* ======================================== */
+/* REUSABLE HERO FOR ROOM PAGES            */
+/* ======================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+/* Dark overlay – same as index */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 15, 10, 0.20);
+  z-index: 1;
+}
+
+/* Content above overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+/* Big room title – same glow as logo */
+.hero h1 {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 5.5rem;
+  color: #f4e4bc;
+  text-shadow: 0 0 20px rgba(0, 255, 204, 0.6), 0 4px 8px rgba(0,0,0,0.8);
+  margin-bottom: 1rem;
+}
+
+/* Tagline */
+.hero p {
+  font-size: 1.6rem;
+  color: #d6c8a8;
+  margin: 1rem auto 2rem;
+  max-width: 700px;
+}
+
+/* ========================================
+   INDEX HERO – FULL-SCREEN EPIC BANNER
+   PURPOSE: Tall, fixed-background hero on homepage with dark overlay.
+            Centers content vertically and horizontally.
+   ======================================== */
+.index-hero {
+  position: relative;
+  min-height: 100vh;
+  background: url('../images/frontpageimage.jpg') center/cover no-repeat fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+/* Dark overlay to improve text readability */
+.index-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 15, 10, 0.55);   /* Deep green tint */
+  z-index: 1;
+}
+
+/* Hero text container – above overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+/* Large ornate logo with glowing cyan shadow */
+.index-hero .logo {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 5.5rem;
+  color: #f4e4bc;                     /* Antique gold */
+  text-shadow:
+    0 0 20px rgba(0, 255, 204, 0.6),  /* Neon cyan glow */
+    0 4px 8px rgba(0,0,0,0.8);
+  margin-bottom: 1rem;
+}
+
+/* Hero tagline – readable and centered */
+.index-hero p {
+  font-size: 1.6rem;
+  color: #d6c8a8;
+  margin: 1rem auto 2rem;
+  max-width: 700px;
+}
+
+/* ========================================
+   HEADER – FLOATING ON HERO
+   PURPOSE: Transparent fixed header with logo and navigation.
+            Stays on top of hero content.
+   ======================================== */
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 100;
+  padding: 1rem 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Smaller logo in nav – consistent branding */
+header .logo {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 2rem;
+  color: #f4e4bc;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
+}
+
+/* Desktop nav links – horizontal */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #e8dcca;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00ffcc;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+/* ========================================
+   BUTTONS – CALL-TO-ACTION
+   PURPOSE: Styled CTA buttons with hover glow effect.
+   ======================================== */
+.btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  margin: 0.5rem;
+  background: #5d4037;                /* Rich brown */
+  color: #f4e4bc;
+  border: 2px solid #8d6e63;          /* Earthy border */
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background: #00ffcc;                /* Neon cyan */
+  color: #0b0f0a;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+}
+
+/* ========================================
+   LAYOUT & CONTENT CONTAINERS
+   PURPOSE: Consistent max-width, padding, and spacing.
+   ======================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+section { 
+  padding: 4rem 0; 
+}
+
+.text-center { 
+  text-align: center; 
+}
+
+/* Push content below fixed header to avoid overlap */
+section.container {
+  margin-top: 80px;
+}
+
+/* ========================================
+   CARD GRID & INDIVIDUAL CARDS
+   PURPOSE: Responsive grid for room previews, events, etc.
+            Cards have dark translucent background and glowing titles.
+   ======================================== */
+.card-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 2rem;
+}
+
+.card {
+  background: rgba(26, 28, 21, 0.8);   /* Semi-transparent dark */
+  border: 1px solid #5d4037;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card h3 {
+  color: #00ffcc;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 8px rgba(0, 255, 204, 0.3);
+}
+
+/* ========================================
+   AMENITIES SECTION
+   PURPOSE: Icon + text grid for lodge features.
+            Uses SVG icons with glow filter.
+   ======================================== */
+.amenities {
+  background: rgba(11, 15, 10, 0.85);
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.amenities ul {
+  list-style: none;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.amenities li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #e8dcca;
+}
+
+.amenities svg {
+  width: 36px;
+  height: 36px;
+  fill: #00ffcc;
+  filter: drop-shadow(0 0 6px rgba(0, 255, 204, 0.4));
+}
+
+/* ========================================
+   ROOM PAGE CENTERING OVERRIDES
+   PURPOSE: Forces center alignment on room detail pages.
+            Applied via .room-page wrapper (not in HTML yet – future use).
+   ======================================== */
+.room-page .hero-content,
+.room-page .card-grid {
+  text-align: center;
+}
+
+.room-page .card-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.room-page .card {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+/* ======================================== */
+/* PARCHMENT SCROLL FORM                    */
+/* ======================================== */
+.parchment-scroll {
+  max-width: 800px;
+  margin: 3rem auto;
+  background: url('../images/parchment.jpg') center/cover; /* parchment texture */
+  background-color: #f4e9d8;
+  border-radius: 20px;
+  padding: 60px 50px 80px;
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.6),
+    inset 0 0 80px rgba(139, 94, 60, 0.3);
+  position: relative;
+  border: 20px solid #8b6f47;
+  border-image: url('runeborder.jpg') 30 round; /* makes a frame for the parchment */
+}
+
+/* Fancy roll ends (top & bottom) */
+.parchment-scroll::before,
+.parchment-scroll::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 120px;
+  height: 60px;
+  background: linear-gradient(to bottom, #3e2c1a 0%, #5d4037 100%);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+  z-index: -1;
+}
+.parchment-scroll::before { top: -30px; }
+.parchment-scroll::after  { bottom: -30px; }
+
+/* Form styling inside scroll */
+.raven-form label {
+  color: #3e2c1a;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 0 #fff;
+  margin-bottom: 0.5rem;
+}
+.raven-form input,
+.raven-form textarea {
+  background: rgba(255,248,220,0.7);
+  border: 2px solid #8b6f47;
+  color: #3e2c1a;
+  font-family: 'Lora', serif;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+.raven-form input:focus,
+.raven-form textarea:focus {
+  outline: none;
+  border-color: #00ffcc;
+  box-shadow: 0 0 20px rgba(0,255,204,0.5);
+  background: rgba(255,255,255,0.9);
+}
+.form-grid-dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.scroll-btn {
+  background: #5d4037;
+  color: #f4e4bc;
+  font-size: 1.4rem;
+  padding: 1rem 3rem !important;
+  margin: 2rem auto 0;
+  display: block;
+  box-shadow: 0 0 20px rgba(0,255,204,0.6);
+}
+.scroll-btn:hover {
+  background: #00ffcc !important;
+  color: #0b0f0a !important;
+  transform: scale(1.05);
+}
+
+/* ========================================
+   FOOTER
+   PURPOSE: Dark footer with centered text, border, and links.
+   ======================================== */
+footer {
+  background: #0b0f0a;
+  padding: 3rem 0;
+  text-align: center;
+  border-top: 1px solid #5d4037;
+  font-size: 1rem;
+  color: #a8b89a;
+}
+
+footer a {
+  color: #00ffcc;
+  text-decoration: none;
+}
+
+/* ========================================
+   MOBILE RESPONSIVENESS – MEDIA QUERIES
+   PURPOSE: Adjust layouts, typography, and spacing for tablets (768px) and phones (480px).
+            Mobile-first tweaks to maintain fantasy theme without losing readability.
+   UPDATED: Nov 29, 2025
+   ======================================== */
+
+/* Tablet and below (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Hero adjustments: Smaller fonts, more padding for touch */
+  .hero,
+  .index-hero {
+    padding: 1rem;
+    min-height: 80vh; /* Slightly shorter to fit nav */
+  }
+  
+  .hero h1,
+  .index-hero .logo {
+    font-size: 3.5rem; /* Reduced from 5.5rem for better fit */
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero p,
+  .index-hero p {
+    font-size: 1.2rem; /* Smaller tagline */
+    max-width: 90%;
+    margin: 0.5rem auto 1rem;
+  }
+  
+  /* Header: Stack nav vertically for space */
+  header {
+    padding: 0.5rem 0;
+    background: rgba(11, 15, 10, 0.8); /* Slight tint for visibility */
+  }
+  
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  header .logo {
+    font-size: 1.8rem; /* Smaller nav logo */
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-links a {
+    font-size: 1.1rem; /* Slightly larger for touch */
+    padding: 0.5rem;
+  }
+  
+  /* Layout: Reduce section padding, adjust top margin */
+  section {
+    padding: 2rem 0;
+  }
+  
+  section.container {
+    margin-top: 120px; /* More space to account for stacked nav */
+    padding: 0 0.5rem;
+  }
+  
+  .container {
+    padding: 0 0.5rem;
+  }
+  
+  /* Cards: Single column, taller images for portrait mode */
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card img {
+    height: 250px; /* Taller for mobile scroll */
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  /* Amenities: Single column stack */
+  .amenities {
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+  
+  .amenities ul {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .amenities li {
+    justify-content: center; /* Center icons on mobile */
+  }
+  
+  .amenities svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* Room page: Full-width cards */
+  .room-page .card-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .room-page .card {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  /* Parchment form: Reduce padding, stack date grid */
+  .parchment-scroll {
+    margin: 1rem auto;
+    padding: 30px 20px 50px;
+    max-width: 95%;
+    border-width: 10px; /* Thinner border on small screens */
+  }
+  
+  .parchment-scroll::before,
+  .parchment-scroll::after {
+    width: 80px;
+    height: 40px;
+  }
+  
+  .parchment-scroll::before { top: -20px; }
+  .parchment-scroll::after { bottom: -20px; }
+  
+  .raven-form label {
+    font-size: 1.1rem;
+  }
+  
+  .raven-form input,
+  .raven-form textarea {
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+  
+  .form-grid-dates {
+    grid-template-columns: 1fr; /* Stack dates vertically */
+    gap: 1rem;
+  }
+  
+  .scroll-btn {
+    padding: 0.8rem 2rem !important;
+    font-size: 1.2rem;
+  }
+  
+  /* Buttons: Full-width for easier tapping */
+  .btn {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0.5rem auto;
+    padding: 0.8rem 1.5rem;
+  }
+  
+  /* Footer: Less padding */
+  footer {
+    padding: 2rem 0;
+    font-size: 0.9rem;
+  }
+}
+
+/* Small phones (max-width: 480px) – Extra tweaks for very small screens */
+@media (max-width: 480px) {
+  .hero h1,
+  .index-hero .logo {
+    font-size: 2.8rem;
+  }
+  
+  .hero p,
+  .index-hero p {
+    font-size: 1.1rem;
+  }
+  
+  header .logo {
+    font-size: 1.5rem;
+  }
+  
+  .nav-links a {
+    font-size: 1rem;
+  }
+  
+  section {
+    padding: 1.5rem 0;
+  }
+  
+  .card img {
+    height: 200px; /* Back to original for tiny screens */
+  }
+  
+  .parchment-scroll {
+    padding: 20px 15px 40px;
+    border-radius: 15px;
+  }
+  
+  .btn {
+    padding: 0.7rem 1rem;
+  }
+}
+/* ========================================
+   PROJECT MAP (dev reference – safe to remove in production)
+   project_mray/
+   ├── index.html
+   ├── contact.html
+   ├── css/
+   │   └── styles.css ← You are here
+   ├── events/
+   │   └── events.html
+   ├── images/
+   │   └── logo.gif
+   │   └── scenery.jpg
+   ├── rooms/
+   │   └── rangersroost.html
+   │   └── wizardstower.html
+   ├── screenshots/
+   └── structure.txt
+   ======================================== */
+   
+   
+   
+   
