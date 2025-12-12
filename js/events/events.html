@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This page displays our up-coming and on-going events held at our establishment! Live an epic tale out with friends or join our Board Game Nights!">
+  <title>Events – Sword & Board B&B</title>
+
+  <!-- ========================================
+       FILE: events/events.html
+       PURPOSE: Events calendar page listing recurring TTRPG and board game gatherings.
+                Features hero banner, event cards, and private booking CTA.
+       ======================================== -->
+
+<!-- Google Fonts – Lora (body) + Cinzel Decorative (logo) + fallback Cinzel -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Global stylesheet – layout, colors, buttons, card grid -->
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Favicon – relative path from /events/ -->
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+</head>
+
+<body>
+  <!-- ========================================
+       SECTION: Navigation Header
+       PURPOSE: Reusable top nav with logo, hamburger (mobile), and site links.
+                Highlights current page ("Events").
+       ======================================== -->
+  <header>
+    <nav class="container">
+	<a href="../index.html" class="logo">Sword & Board</a>
+	<button class="hamburger" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../rooms/rangersroost.html">Ranger’s Roost</a>
+        <a href="../rooms/wizardstower.html">Wizard’s Tower</a>
+        <a href="events.html">Events</a>
+        <a href="../contacts.html">Send Raven</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================
+       SECTION: Hero Banner (Events)
+       PURPOSE: Full-screen hero with dark overlay gradient and background image.
+                Centered title and tagline.
+       NOTE: Inline background style – consider moving to CSS for consistency.
+       ======================================== -->
+  <section class="hero" style="background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)), url('../images/herobg.jpg') center/cover no-repeat;">
+    <div class="container text-center">
+      <h1>Legendary Events</h1>
+      <p>Roll for initiative. Join the campaign. Live the tale.</p>
+    </div>
+  </section>
+
+  <!-- ========================================
+       SECTION: Upcoming Events Grid
+       PURPOSE: Three event cards with image, title, date/location, description, and RSVP CTA.
+                Uses .card-grid for responsive flex layout.
+       ======================================== -->
+  <section class="container">
+    <h2 class="text-center">Upcoming Quests & Gatherings</h2>
+    <div class="card-grid">
+
+      <!-- ========================================
+           EVENT CARD 1: Critical Campaign Night
+           ======================================== -->
+      <div class="card">
+        <img src="../images/frontpageimage.jpg" alt="On the left side a weary adventurer aproaches a large Gothic looking house nestled back in a mountain, on the right side we see inside the house and see people playing DND and rolling dice while neon game signs glow in the corners">
+        <div class="card-body">
+          <h3>Critical Campaign Night</h3>
+          <p><strong>Date:</strong> Every Friday, 7:00 PM</p>
+          <p><strong>Location:</strong> The War Room</p>
+          <p>Join our rotating DMs for epic one-shots. Bring your character or roll a new hero. Dice, snacks, and mead provided.</p>
+          <a href="../contacts.html" class="btn" style="margin-top:1rem; display:inline-block;">RSVP</a>
+        </div>
+      </div>
+
+      <!-- ========================================
+           EVENT CARD 2: Board Game Bonanza
+           ======================================== -->
+      <div class="card">
+        <img src="../images/bgb.jpg" alt="People grouped around large tables with boardgames laid out as they all participate in various boardgames">
+        <div class="card-body">
+          <h3>Board Game Bonanza</h3>
+          <p><strong>Date:</strong> 2nd Saturday Monthly, 3:00 PM</p>
+          <p><strong>Location:</strong> Hearth Hall</p>
+          <p>From Catan to Gloomhaven — open play, tournaments, and new game demos. All levels welcome.</p>
+          <a href="../contacts.html" class="btn" style="margin-top:1rem; display:inline-block;">Join the Guild</a>
+        </div>
+      </div>
+
+      <!-- ========================================
+           EVENT CARD 3: Fireside Lore & Libations
+           ======================================== -->
+      <div class="card">
+        <img src="../images/hearthhall.jpg" alt="People gather in a great hall around tables of food and a large fire for storytelling. Neon Game signs line the walls with some Neon gaming cabinets">
+        <div class="card-body">
+          <h3>Fireside Lore & Libations</h3>
+          <p><strong>Date:</strong> Last Sunday Monthly, 8:00 PM</p>
+          <p><strong>Location:</strong> Hearth Hall</p>
+          <p>Bring a tale, hear a legend. Bards, drinks, and roaring fire. Special themed mead each month.</p>
+          <a href="../contacts.html" class="btn" style="margin-top:1rem; display:inline-block;">Reserve a Seat</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================
+       SECTION: Private Event Booking
+       PURPOSE: Promotes renting War Room or Hearth Hall for custom events.
+                Centered text and CTA button.
+       ======================================== -->
+  <section class="amenities">
+    <div class="container">
+      <h2 class="text-center">Host Your Own Quest</h2>
+      <p class="text-center" style="max-width:700px; margin:2rem auto;">
+        Planning a game night, birthday campaign, or corporate team-building dungeon crawl?
+        Book the <strong>War Room</strong> or <strong>Hearth Hall</strong> for private events.
+      </p>
+      <p class="text-center">
+        <a href="../contacts.html" class="btn">Inquire About Private Events</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================================
+       SECTION: Footer
+       PURPOSE: Copyright, developer credit, and "Back to Home" link.
+                All wrapped in .container for consistent spacing.
+       ======================================== -->
+  <footer>
+    <div class="container">
+      <p><a href="../index.html">Back to Home</a></p>
+      Copyright &copy; 2025<br>
+      <a href="mailto:mcray22@amarillocollege.com">Michael Ray</a>
+    </div>
+  </footer>
+
+  <!-- ========================================
+       PROJECT MAP (dev reference – safe to remove in production)
+       project_mray/
+       ├── index.html
+       ├── contact.html
+       ├── css/
+       │   └── styles.css
+       ├── events/
+       │   └── events.html ← You are here
+       ├── images/
+       │   └── logo.gif
+       │   └── scenery.jpg
+       ├── rooms/
+       │   └── rangersroost.html
+       │   └── wizardstower.html
+       ├── screenshots/
+       └── structure.txt
+       ======================================== -->
+<script src="../js/script.js"></script>	   
+</body>
+</html>
