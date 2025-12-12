@@ -233,7 +233,9 @@ section.container {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: 1fr;
-  margin-top: 2rem;
+  justify-items: center; /* centers grid items horizontally */
+  margin: 2rem auto; /* centers whole grid */
+  max-width: 1200px; /* matches container */
 }
 
 .card {
@@ -241,7 +243,21 @@ section.container {
   border: 1px solid #5d4037;
   border-radius: 12px;
   overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+.card-header {
+	background: #5d4037;
+	color: #f4e4bc;
+	padding: 15px;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: center;
+}
+
 
 .card img {
   width: 100%;
@@ -260,7 +276,9 @@ section.container {
   text-shadow: 0 0 8px rgba(0, 255, 204, 0.3);
 }
 
-/* Amenities – single column */
+/* =============================
+	Amenities – single column 
+   =============================*/
 .amenities {
   background: rgba(11, 15, 10, 0.85);
   border-radius: 12px;
@@ -416,6 +434,20 @@ footer a {
   color: #00ffcc;
   text-decoration: none;
 }
+
+/* ========================================
+	Mobile table tweaks ( up to 480px)
+	Purpose: compact table for small phones.
+	=======================================*/
+@media (max-width: 480px) {
+	table {
+		font-size: 0.9rem;
+	}
+	th, td {
+		padding: 8px;
+	}
+}
+
 
 /* ========================================
    TABLET STYLES (481px to 768px)
@@ -635,8 +667,12 @@ footer a {
  
   /* Cards – multi-column grid */
   .card-grid {
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	  display: grid;
+	  gap: 1.5rem;
+	  grid-template-columns: 1fr;
+	  justify-items: center; /*centers grid items horizontally */
+	  margin: 2rem auto; /* centers whole grid */
+	  max-width: 1200px; /* matches .container */
   }
  
   .card img {
@@ -671,6 +707,8 @@ footer a {
   .room-page .card-grid {
     flex-direction: row;
     justify-content: center;
+	flex-wrap: wrap; /* allows multi-card wrap without overflow */
+	gap: 2rem;
   }
  
   .room-page .card {
