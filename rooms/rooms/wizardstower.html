@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This page displays our WizardsTower Room, which features magical-themed luxury bed with exquisite bamboo cooling sheets make you feel like a cold spell on a hot day!">
+  <title>Wizard’s Tower – Sword & Board</title>
+
+  <!-- ========================================
+       FILE: rooms/room2.html
+       PURPOSE: Dedicated page for the "Wizard’s Tower" suite. 
+                Showcases hero banner with inline background image, room image, 
+                pricing, and bullet list of magical-themed amenities.
+       ======================================== -->
+
+<!-- Google Fonts – Lora (body) + Cinzel Decorative (logo) + fallback Cinzel -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Global stylesheet – shared layout, typography, buttons, grid -->
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Favicon – relative path from /rooms/ -->
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+</head>
+
+<body>
+  <!-- ========================================
+       SECTION: Navigation Header
+       PURPOSE: Reusable top nav with logo, hamburger menu (mobile), and site links.
+                Highlights current page ("Wizard’s Tower").
+       ======================================== -->
+  <header>
+    <nav class="container">
+	  <a href="../index.html" class="logo">Sword & Board</a>
+	  <button class="hamburger" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="rangersroost.html">Ranger’s Roost</a>
+        <a href="wizardstower.html">Wizard’s Tower</a>
+        <a href="../events/events.html">Events</a>
+        <a href="../contacts.html">Send Raven</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================
+       SECTION: Hero Banner (Wizard’s Tower)
+       PURPOSE: Full-width background image (inline style) with centered title and price.
+                Uses .container for max-width and .text-center for alignment.
+       NOTE: Background image set via inline style – consider moving to CSS for consistency.
+       ======================================== -->
+  <section class="hero" style="background-image:url('../images/wizroom.jpg')">
+    <div class="container text-center">
+      <h1>The Wizard’s Tower</h1>
+      <p>From 1d10 + 110 gold / night</p>
+    </div>
+  </section>
+
+  <!-- ========================================
+       SECTION: Room Details Card
+       PURPOSE: Single card with room photo and list of premium features.
+                Reuses same image as hero (could be optimized with smaller version).
+       ======================================== -->
+
+    <div class="card">
+      <div class="card">
+        <img src="../images/wizroom.jpg" alt="Wizard room">
+        <div class="card-body">
+          <ul>
+            <li>Spellbook library & dice tower</li>
+            <li>King bed with starlight ceiling</li>
+            <li>Private bath with rain shower</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- ========================================
+       SECTION: Footer
+       PURPOSE: Copyright, developer credit, and "Back to Home" link.
+                Wrapped in .container for consistent padding.
+       ======================================== -->
+  <footer>
+    <div class="container">
+      <p><a href="../index.html">Back to Home</a></p>
+    </div>
+    Copyright &copy; 2025<br>
+    <a href="mailto:mcray22@amarillocollege.com">Michael Ray</a>
+  </footer>
+
+  <!-- ========================================
+       PROJECT MAP (dev reference – safe to remove in production)
+       project_mray/
+       ├── index.html
+       ├── contact.html
+       ├── css/
+       │   └── styles.css
+       ├── events/
+       │   └── events.html
+       ├── images/
+       │   └── logo.gif
+       │   └── scenery.jpg
+       ├── rooms/
+       │   └── rangersroost.html
+       │   └── wizardstower.html ← You are here
+       ├── screenshots/
+       └── structure.txt
+       ======================================== -->
+<script src="../js/script.js"></script>	   
+</body>
+</html>
