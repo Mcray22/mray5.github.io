@@ -794,6 +794,24 @@ footer a {
     transform: translateY(0);
   }
 }
+
+/* ======= Book Button added in results ======*/
+.book-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #8b5cf6;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+
+}
+.book-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
 /* ===== Checkbox alignment fix ===== */
 .checkbox-group {
   margin-top: 1rem;
