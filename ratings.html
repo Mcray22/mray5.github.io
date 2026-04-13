@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ratings | Sword & Board</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">Sword &amp; Board</div>
+        <button class="hamburger" aria-label="Toggle navigation">☰</button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="events.html">Events</a>
+          <a href="calculator.html">Calculator</a>
+          <a href="contactus.html">Contact</a>
+          <a href="ratings.html">Ratings</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="container">
+      <div class="parchment-scroll">
+        <section class="card">
+          <h2>Leave a Rating</h2>
+          <form id="ratingForm" class="raven-form">
+            <label for="guestName">Name:</label>
+            <input type="text" id="guestName" name="guestName" />
+
+            <label for="roomRated">Room:</label>
+            <select id="roomRated" name="roomRated">
+              <option>The Wizard's Tower</option>
+              <option>The Knight's Hall</option>
+              <option>The Dragon's Keep</option>
+            </select>
+
+            <label>Rating:</label>
+            <div class="star-rating">
+              <span data-value="5">★</span>
+              <span data-value="4">★</span>
+              <span data-value="3">★</span>
+              <span data-value="2">★</span>
+              <span data-value="1">★</span>
+            </div>
+            <input type="hidden" id="rating" name="rating" />
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments"></textarea>
+
+            <button type="submit" class="scroll-btn">
+              Submit Your Tale ⚔️
+            </button>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Sword &amp; Board B&amp;B. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/ratings.js"></script>
+  </body>
+</html>
