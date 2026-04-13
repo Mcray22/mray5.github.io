@@ -7,7 +7,7 @@
 
     <!-- ========================================
        FILE: contacts.html
-       PURPOSE: Contact/booking form page allowing users to send a "raven" (email) 
+       PURPOSE: Contact/booking form page allowing users to send a "raven"
                 with name, email, arrival/departure dates, and message.
                 Includes phone number and footer navigation.
        ======================================== -->
@@ -20,8 +20,11 @@
       rel="stylesheet"
     />
 
-    <!-- Global stylesheet – shared layout, colors, buttons, form styling -->
-    <link rel="stylesheet" href="css/styles.css" />
+    <!-- External stylesheets -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/raven.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
 
     <!-- Favicon – appears in browser tab -->
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
@@ -39,8 +42,8 @@
         <button class="hamburger" aria-label="Toggle menu">☰</button>
         <div class="nav-links" id="nav-links">
           <a href="index.html">Home</a>
-          <a href="rooms/rangersroost.html">Ranger’s Roost</a>
-          <a href="rooms/wizardstower.html">Wizard’s Tower</a>
+          <a href="rooms/rangersroost.html">Ranger's Roost</a>
+          <a href="rooms/wizardstower.html">Wizard's Tower</a>
           <a href="events/events.html">Events</a>
           <a href="contacts.html">Send Raven</a>
           <a href="calculator.html">Pricing</a>
@@ -50,56 +53,106 @@
     </header>
 
     <!-- ========================================
-     SECTION: Send a Raven – Parchment Scroll Form
-     ======================================== -->
+       SECTION: Send a Raven – Parchment Scroll Form
+       PURPOSE: Fantasy-themed contact form styled as a parchment scroll.
+       ======================================== -->
     <section class="container">
       <h2 class="text-center" style="font-size: 3.5rem; margin-bottom: 2rem">
         Send a Raven
       </h2>
 
-      <!-- THE SCROLL -->
-      <div class="parchment-scroll">
+      <!-- ============================= -->
+      <!-- 📜 BEGIN PARCHMENT SCROLL 📜 -->
+      <!-- A message prepared for winged delivery -->
+      <!-- ============================= -->
+      <div class="parchment-scroll" id="scroll-shell">
+        <!-- 🧵 Top Roll of the Scroll -->
+        <div class="scroll-roll top-roll"></div>
+
+        <!-- ✍️ The Message Form (ink meets intent) -->
         <form id="contact-form" class="raven-form">
+          <!-- 🧙 Adventurer Identity -->
           <div class="form-group">
-            <label>Adventurer Name</label>
-            <input type="text" required placeholder="e.g. Elowen Starfall" />
+            <label for="adventurer-name">Adventurer Name</label>
+            <input
+              id="adventurer-name"
+              type="text"
+              required
+              placeholder="e.g. Elowen Starfall"
+            />
           </div>
 
+          <!-- 🔮 Scrying Contact -->
           <div class="form-group">
-            <label>Email (or scrying orb address)</label>
+            <label for="raven-email">Email (or scrying orb address)</label>
             <input
+              id="raven-email"
               type="email"
               required
               placeholder="traveler@realm.adventurer"
             />
           </div>
 
+          <!-- 🌙 Passage Through Time -->
           <div class="form-grid-dates">
             <div class="form-group">
-              <label>Arrival under the Moon</label>
-              <input type="date" required />
+              <label for="arrival-date">Arrival under the Moon</label>
+              <input id="arrival-date" type="date" required />
             </div>
+
             <div class="form-group">
-              <label>Departure at Dawn</label>
-              <input type="date" required />
+              <label for="departure-date">Departure at Dawn</label>
+              <input id="departure-date" type="date" required />
             </div>
           </div>
 
+          <!-- 🪶 The Written Message -->
           <div class="form-group">
-            <label>Your Message (written in ink or blood)</label>
+            <label for="raven-message">
+              Your Message (written in ink or blood)
+            </label>
             <textarea
+              id="raven-message"
               rows="8"
               required
               placeholder="Hail, keepers of Sword & Board..."
             ></textarea>
           </div>
 
+          <!-- 🕯️ Seal & Dispatch -->
           <button type="submit" class="btn scroll-btn">
-            ✦ Seal & Send Raven ✦
+            ✦ Seal &amp; Send Raven ✦
           </button>
         </form>
+
+        <!-- 🧵 Bottom Roll of the Scroll -->
+        <div class="scroll-roll bottom-roll"></div>
+
+        <!-- 🎀 Ribbon Binding (appears later) -->
+        <div class="scroll-ribbon" aria-hidden="true"></div>
+
+        <!-- 🔴 Wax Seal (stamped upon completion) -->
+        <div class="wax-seal" aria-hidden="true">✦</div>
       </div>
 
+      <!-- ============================= -->
+      <!-- 🐦 END SCROLL – Awaiting Raven -->
+      <!-- ============================= -->
+
+      <!-- 🐦 Raven Flight Stage (hidden until summoned) -->
+      <div class="raven-flight" id="raven-flight" aria-hidden="true">
+        <span class="raven-icon">🐦‍⬛</span>
+      </div>
+
+      <!-- ✉️ Final Confirmation Message -->
+      <div id="raven-confirmation" class="raven-confirmation">
+        <h3>Your raven has taken flight.</h3>
+        <p>
+          Thank you for your reservation. A reply shall return by wing and wind.
+        </p>
+      </div>
+
+      <!-- 📞 Emergency Contact -->
       <p class="text-center" style="margin-top: 3rem; font-size: 1.1rem">
         Emergency quest line: <a href="tel:+15557837801">+1 (555) QUEST-01</a>
       </p>
@@ -120,11 +173,15 @@
     <!-- ========================================
        PROJECT MAP (dev reference – safe to remove in production)
        project_mray/
+       ├── ratings.html
        ├── index.html
-       ├── contact.html ← You are here
+       ├── contacts.html ← You are here
        ├── calculator.html
        ├── css/
-       │   └── styles.css
+       │   ├── base.css
+       │   ├── layout.css
+       │   ├── raven.css
+       │   └── responsive.css
        ├── events/
        │   └── events.html
        ├── images/
@@ -137,5 +194,6 @@
        └── structure.txt
        ======================================== -->
     <script src="js/script.js"></script>
+    <script src="js/ravenform.js"></script>
   </body>
 </html>

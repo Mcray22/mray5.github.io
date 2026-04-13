@@ -1,14 +1,41 @@
+```html
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ratings | Sword & Board</title>
-    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- ========================================
+       FILE: ratings.html
+       PURPOSE: Guest ratings page for Sword & Board.
+                Allows visitors to leave a room rating,
+                select a room, and submit comments.
+       ======================================== -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- External stylesheets -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/raven.css" />
+    <link rel="stylesheet" href="css/ratings.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
   </head>
+
   <body>
+    <!-- ========================================
+       SECTION: Navigation Header
+       PURPOSE: Main site navigation.
+       ======================================== -->
     <header>
-      <nav>
+      <nav class="container">
         <div class="logo">Sword &amp; Board</div>
         <button class="hamburger" aria-label="Toggle navigation">☰</button>
         <div class="nav-links">
@@ -23,19 +50,24 @@
       </nav>
     </header>
 
+    <!-- ========================================
+       SECTION: Ratings Form
+       PURPOSE: Allows guests to leave a room rating
+                and share comments about their stay.
+       ======================================== -->
     <section class="container">
       <div class="parchment-scroll">
-        <section class="card">
+        <div class="ratings-card">
           <h2>Leave a Rating</h2>
+
           <form id="ratingForm" class="raven-form">
             <label for="guestName">Name:</label>
             <input type="text" id="guestName" name="guestName" />
 
             <label for="roomRated">Room:</label>
             <select id="roomRated" name="roomRated">
-              <option>The Wizard's Tower</option>
-              <option>The Knight's Hall</option>
-              <option>The Dragon's Keep</option>
+              <option value="wizard">The Wizard's Tower</option>
+              <option value="ranger">Ranger's Roost</option>
             </select>
 
             <label>Rating:</label>
@@ -46,6 +78,7 @@
               <span data-value="2">★</span>
               <span data-value="1">★</span>
             </div>
+
             <input type="hidden" id="rating" name="rating" />
 
             <label for="comments">Comments:</label>
@@ -55,10 +88,14 @@
               Submit Your Tale ⚔️
             </button>
           </form>
-        </section>
+        </div>
       </div>
     </section>
 
+    <!-- ========================================
+       SECTION: Footer
+       PURPOSE: Simple site footer.
+       ======================================== -->
     <footer>
       <p>&copy; 2026 Sword &amp; Board B&amp;B. All rights reserved.</p>
     </footer>
@@ -67,3 +104,28 @@
     <script src="js/ratings.js"></script>
   </body>
 </html>
+<!-- ========================================
+     PROJECT MAP (for dev reference – can be removed in production)
+     project_mray/
+     ├── ratings.html ← You are here
+     ├── index.html
+     ├── contacts.html
+     ├── calculator.html
+     ├── css/
+     │   ├── base.css
+     │   ├── layout.css
+     │   ├── raven.css
+     │   ├── ratings.css
+     │   └── responsive.css
+     ├── events/
+     │   └── events.html
+     ├── images/
+     │   └── logo.gif
+     │   └── scenery.jpg
+     ├── rooms/
+     │   └── rangersroost.html
+     │   └── wizardstower.html
+     ├── screenshots/
+     └── structure.txt
+     ======================================== -->
+```

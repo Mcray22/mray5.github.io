@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,16 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quest Cost Calculator – Sword & Board</title>
 
+    <!-- ========================================
+       FILE: calculator.html
+       PURPOSE: Calculates stay cost based on room,
+                dates, guests, packages, and discounts.
+       ======================================== -->
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- External stylesheets -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/raven.css" />
+    <link rel="stylesheet" href="css/calculator.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- Favicon -->
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
   </head>
+
   <body>
+    <!-- ========================================
+       SECTION: Navigation Header
+       ======================================== -->
     <header>
       <nav class="container">
         <a href="index.html" class="logo">Sword & Board</a>
@@ -31,6 +51,10 @@
       </nav>
     </header>
 
+    <!-- ========================================
+       SECTION: Calculator Form
+       PURPOSE: User inputs to calculate stay cost
+       ======================================== -->
     <section class="container">
       <h2 class="text-center" style="font-size: 3rem; margin-bottom: 2rem">
         Quest Cost Calculator
@@ -38,6 +62,7 @@
 
       <div class="parchment-scroll calculator-shell">
         <form id="calculator-form" class="raven-form">
+          <!-- Room selection -->
           <div class="form-group">
             <label for="room">Choose Your Chamber</label>
             <select id="room">
@@ -46,6 +71,7 @@
             </select>
           </div>
 
+          <!-- Dates -->
           <div class="form-grid-dates">
             <div class="form-group">
               <label for="checkin">Arrival Date</label>
@@ -58,6 +84,7 @@
             </div>
           </div>
 
+          <!-- Guests + discount -->
           <div class="form-grid-dates">
             <div class="form-group">
               <label for="guests">Extra Guests</label>
@@ -70,6 +97,7 @@
             </div>
           </div>
 
+          <!-- Package option -->
           <div class="form-group checkbox-group">
             <label class="checkbox-label">
               <input type="checkbox" id="weekendUpgrade" />
@@ -77,11 +105,16 @@
             </label>
           </div>
 
+          <!-- Submit -->
           <button type="submit" class="btn scroll-btn">
             ✦ Reveal My Total ✦
           </button>
         </form>
 
+        <!-- ========================================
+           SECTION: Calculator Results
+           PURPOSE: Displays computed totals
+           ======================================== -->
         <div id="result" class="calculator-result hidden">
           <h3>Your Tavern Ledger</h3>
           <p id="stayNights"></p>
@@ -93,6 +126,7 @@
           <p id="taxAmount"></p>
           <h3 id="grandTotal"></h3>
 
+          <!-- CTA -->
           <a href="contacts.html" class="book-btn" id="bookBtn">
             ⚔️ Book This Quest!
           </a>
@@ -100,6 +134,9 @@
       </div>
     </section>
 
+    <!-- ========================================
+       SECTION: Footer
+       ======================================== -->
     <footer>
       Copyright &copy; 2025<br />
       <a href="mailto:mcray22@amarillocollege.com">Michael Ray</a>
@@ -108,22 +145,26 @@
     <script src="js/script.js"></script>
   </body>
 </html>
+
 <!-- ========================================
-       PROJECT MAP (for dev reference – can be removed in production)
-       project_mray/
-       ├── index.html 
-       ├── contact.html
-       ├── calculator.html ← You are here
-       ├── css/
-       │   └── styles.css
-       ├── events/
-       │   └── events.html
-       ├── images/
-       │   └── logo.gif
-       │   └── scenery.jpg
-       ├── rooms/
-       │   └── rangersroost.html
-       │   └── wizardstower.html
-       ├── screenshots/
-       └── structure.txt
-       ======================================== -->
+     PROJECT MAP (dev reference – safe to remove in production)
+     project_mray/
+     ├── ratings.html
+     ├── index.html
+     ├── contacts.html
+     ├── calculator.html ← You are here
+     ├── css/
+     │   ├── base.css
+     │   ├── layout.css
+     │   ├── raven.css
+     │   ├── calculator.css
+     │   └── responsive.css
+     ├── events/
+     │   └── events.html
+     ├── images/
+     ├── rooms/
+     │   └── rangersroost.html
+     │   └── wizardstower.html
+     └── structure.txt
+     ======================================== -->
+```
