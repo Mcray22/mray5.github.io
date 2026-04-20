@@ -308,3 +308,44 @@ footer a {
   color: #00ffcc;
   text-decoration: none;
 }
+
+
+/* ========================================
+   PHOTO GALLERY (INTERACTIVE)
+   ======================================== */
+
+.photo-gallery {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.main-gallery-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 12px #00ffff;
+  margin-bottom: 15px;
+}
+
+.thumbnail-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.thumbnail-row img {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 8px #00ffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.thumbnail-row img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 14px #00ffff;
+}

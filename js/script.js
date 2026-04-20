@@ -123,3 +123,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+// ========================================
+// WIZARD'S TOWER GALLERY FUNCTION
+// ========================================
+function changeWizardImage(thumbnail) {
+  const mainImage = document.getElementById("main-wizard-image");
+  if (mainImage) {
+    mainImage.src = thumbnail.src;
+    mainImage.alt = thumbnail.alt;
+  }
+}
