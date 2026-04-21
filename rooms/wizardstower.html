@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wizard's Tower - Sword & Board</title>
 
-    <!-- ========================================
-       FILE: rooms/wizardstower.html
-       PURPOSE: Dedicated page for the Wizard’s Tower suite.
-       ======================================== -->
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,9 +23,7 @@
   </head>
 
   <body class="wizard-page">
-    <!-- ========================================
-       NAVIGATION
-       ======================================== -->
+    <!-- NAVIGATION -->
     <header>
       <nav class="container">
         <a href="../index.html" class="logo">Sword & Board</a>
@@ -47,12 +40,10 @@
       </nav>
     </header>
 
-    <!-- ========================================
-       HERO
-       ======================================== -->
+    <!-- HERO -->
     <section
       class="hero wizard-tower"
-      style="background-image: url(&quot;../images/wizroom.jpg&quot;)"
+      style="background-image: url(&quot;../images/wizard1.jpg&quot;)"
     >
       <div class="hero-content">
         <div class="hero-inner text-center">
@@ -62,13 +53,75 @@
       </div>
     </section>
 
-    <!-- ========================================
-       ROOM DETAILS
-       ======================================== -->
+    <!-- ROOM DETAILS + GALLERY -->
     <section class="container">
       <div class="card-grid">
         <div class="card">
-          <img src="../images/room1.jpg" alt="Wizard room" />
+          <h2>Wizard’s Tower Gallery</h2>
+
+          <div class="photo-gallery">
+            <img
+              id="main-wizard-image"
+              class="main-gallery-image"
+              src="../images/wizard1.jpg"
+              alt="Arcane bedchamber with glowing runes"
+            />
+
+            <div class="gallery-description">
+              <h3 id="wizard-image-title">Arcane Bedchamber</h3>
+              <p id="wizard-image-text">
+                A mystical sleeping space wrapped in enchanted light, ancient
+                symbols, and the quiet promise of midnight study.
+              </p>
+            </div>
+
+            <div class="thumbnail-row">
+              <img
+                src="../images/wizard1.jpg"
+                alt="Arcane bedchamber with glowing runes"
+                data-title="Arcane Bedchamber"
+                data-description="A mystical sleeping space wrapped in enchanted light, ancient symbols, and the quiet promise of midnight study."
+                onclick="changeWizardImage(this)"
+                class="active-thumbnail"
+              />
+              <img
+                src="../images/wizard2.jpg"
+                alt="Spellbound reading corner"
+                data-title="Spellbound Reading Corner"
+                data-description="A cozy corner for tomes, quiet study, and late-night planning before the next grand adventure."
+                onclick="changeWizardImage(this)"
+              />
+              <img
+                src="../images/wizard3.jpg"
+                alt="Alchemy-inspired interior"
+                data-title="Alchemy Chamber"
+                data-description="This view captures the tower’s potion-lab energy, blending mystery, comfort, and arcane atmosphere."
+                onclick="changeWizardImage(this)"
+              />
+              <img
+                src="../images/wizard4.jpg"
+                alt="Enchanted tower decor"
+                data-title="Enchanted Decor"
+                data-description="Glowing accents and magical details give the room its signature neon-gothic fantasy identity."
+                onclick="changeWizardImage(this)"
+              />
+              <img
+                src="../images/wizard5.jpg"
+                alt="Mage’s rest space"
+                data-title="Mage’s Rest"
+                data-description="A resting place fit for a traveling spellcaster, balancing elegance, warmth, and mystic ambiance."
+                onclick="changeWizardImage(this)"
+              />
+              <img
+                src="../images/wizard6.jpg"
+                alt="Wizard tower showcase"
+                data-title="Tower Showcase"
+                data-description="A full showcase of the Wizard’s Tower experience, where immersive fantasy meets stylish comfort."
+                onclick="changeWizardImage(this)"
+              />
+            </div>
+          </div>
+
           <div class="card-body">
             <ul>
               <li>Spellbook library & dice tower</li>
@@ -80,31 +133,7 @@
       </div>
     </section>
 
-
-    <!-- ========================================
-       WIZARD'S TOWER GALLERY (INTERACTIVE)
-       Displays 6 images with clickable thumbnails
-       ======================================== -->
-    <div class="card">
-      <h2>Wizard’s Tower Gallery</h2>
-
-      <div class="photo-gallery">
-        <img id="main-wizard-image" class="main-gallery-image" src="../images/wizard1.jpg" alt="Wizard main image">
-
-        <div class="thumbnail-row">
-          <img src="../images/wizard1.jpg" alt="Wizard image 1" onclick="changeWizardImage(this)">
-          <img src="../images/wizard2.jpg" alt="Wizard image 2" onclick="changeWizardImage(this)">
-          <img src="../images/wizard3.jpg" alt="Wizard image 3" onclick="changeWizardImage(this)">
-          <img src="../images/wizard4.jpg" alt="Wizard image 4" onclick="changeWizardImage(this)">
-          <img src="../images/wizard5.jpg" alt="Wizard image 5" onclick="changeWizardImage(this)">
-          <img src="../images/wizard6.jpg" alt="Wizard image 6" onclick="changeWizardImage(this)">
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================
-       FOOTER
-       ======================================== -->
+    <!-- FOOTER -->
     <footer>
       <div class="container">
         <p><a href="../index.html">Back to Home</a></p>
@@ -116,23 +145,3 @@
     <script src="../js/script.js"></script>
   </body>
 </html>
-
-<!-- ========================================
-     PROJECT MAP
-     project_mray/
-     ├── ratings.html
-     ├── index.html
-     ├── contacts.html
-     ├── calculator.html
-     ├── css/
-     │   ├── base.css
-     │   ├── layout.css
-     │   └── responsive.css
-     ├── events/
-     │   └── events.html
-     ├── images/
-     ├── rooms/
-     │   └── rangersroost.html
-     │   └── wizardstower.html ← You are here
-     ======================================== -->
-```
