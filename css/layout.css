@@ -375,3 +375,26 @@ footer a {
     0 0 10px rgba(185, 124, 255, 0.7),
     0 0 20px rgba(0, 255, 255, 0.25);
 }
+
+/* ========================================
+   EVENTS PAGE – MAP SECTION
+   PURPOSE: Styles embedded Google Map
+   ======================================== */
+
+.event-map {
+  width: 100%;
+  min-height: 350px;
+  border-radius: 10px;
+  border: 2px solid #b98b73;
+  margin: 1.5rem 0;
+
+  /* Matches your aesthetic */
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.2);
+  transition: all 0.2s ease;
+}
+
+.event-map:hover {
+  box-shadow:
+    0 0 10px rgba(0,255,200,0.6),
+    0 0 20px rgba(0,255,200,0.3);
+}

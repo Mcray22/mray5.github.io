@@ -43,6 +43,7 @@
           <a href="../contacts.html">Send Raven</a>
           <a href="../calculator.html">Pricing</a>
           <a href="../ratings.html">Ratings</a>
+          <a href="../store.html">The Arcanium</a>
         </div>
       </nav>
     </header>
@@ -132,6 +133,28 @@
     </section>
 
     <!-- ========================================
+      EVENT LOCATION MAP
+      ======================================== -->
+    <section class="container">
+      <h2 class="text-center">Find the Gathering Hall</h2>
+      <p class="text-center">
+        All roads lead to our legendary meeting grounds.
+      </p>
+
+      <div id="event-map" class="event-map"></div>
+
+      <p class="text-center">
+        <a
+          class="btn"
+          href="https://www.google.com/maps/search/?api=1&query=Medieval%20Times%20Dinner%20%26%20Tournament%2C%20Dallas%2C%20TX"
+          target="_blank"
+        >
+          Open in Google Maps
+        </a>
+      </p>
+    </section>
+
+    <!-- ========================================
        FOOTER
        ======================================== -->
     <footer>
@@ -143,6 +166,13 @@
     </footer>
 
     <script src="../js/script.js"></script>
+    <script src="../js/event-map.js"></script>
+
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCHYQTzbnGfmpK3vTV-IvHOqD-QA5_dwc&callback=initEventMap"
+    ></script>
   </body>
 </html>
 ```
