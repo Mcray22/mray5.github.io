@@ -21,24 +21,48 @@ body {
   text-align: center;
 }
 
-.btn {
-  display: block;
-  width: 100%;
-  max-width: 300px;
-  margin: 0.5rem auto;
-  padding: 0.7rem 1rem;
-  background: #5d4037;
-  color: #f4e4bc;
-  border: 2px solid #8d6e63;
-  border-radius: 8px;
+/* ===============================
+   GLOBAL BUTTON SYSTEM
+   Master button style for Sword & Board
+   =============================== */
+
+.btn,
+button.btn,
+input.btn,
+input[type="submit"] {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid #00ffe0;
+  border-radius: 10px;
+  background: rgba(10, 10, 25, 0.9);
+  color: #00ffe0;
+  font-family: "Cinzel", serif;
   font-weight: bold;
   text-decoration: none;
-  transition: all 0.3s;
-  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(0, 255, 224, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
-.btn:hover {
-  background: #00ffcc;
-  color: #0b0f0a;
-  box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+.btn:hover,
+button.btn:hover,
+input.btn:hover,
+input[type="submit"]:hover {
+  background: rgba(0, 255, 224, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(0, 255, 224, 0.75);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.scroll-btn {
+  border: 2px solid #00ffe0;
+  background: rgba(10, 10, 25, 0.9);
+  color: #00ffe0;
+  box-shadow: 0 0 12px rgba(0, 255, 224, 0.45);
 }

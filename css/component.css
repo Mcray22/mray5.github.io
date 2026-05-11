@@ -49,37 +49,6 @@
   line-height: 1.7;
 }
 
-/* ===============================
-   GLOBAL BUTTON SYSTEM
-   Used for links, forms, cart, checkout, and calls to action
-   =============================== */
-
-.btn,
-.realm-btn,
-button,
-input[type="submit"] {
-  display: inline-block;
-  background: linear-gradient(135deg, #00ffe0, #8a2be2);
-  color: #050510;
-  border: none;
-  border-radius: 999px;
-  padding: 0.8rem 1.4rem;
-  font-family: "Cinzel", serif;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: 0 0 16px rgba(0, 255, 224, 0.4);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.btn:hover,
-.realm-btn:hover,
-button:hover,
-input[type="submit"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 26px rgba(0, 255, 224, 0.65);
-}
-
 
 /* ===============================
    GLOBAL SECTION SPACING

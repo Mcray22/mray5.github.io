@@ -7,7 +7,7 @@
   if (firstWizardThumbnail) {
     firstWizardThumbnail.classList.add("active-thumbnail");
   }
-});
+
 
 
 // ========================================
