@@ -22,14 +22,11 @@ body {
 }
 
 /* ===============================
-   GLOBAL BUTTON SYSTEM
-   Master button style for Sword & Board
+   GLOBAL REALM BUTTON
+   General exploration / page buttons
    =============================== */
 
-.btn,
-button.btn,
-input.btn,
-input[type="submit"] {
+.btn {
   display: inline-block;
   padding: 0.75rem 1.25rem;
   border: 2px solid #00ffe0;
@@ -44,25 +41,34 @@ input[type="submit"] {
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
-.btn:hover,
-button.btn:hover,
-input.btn:hover,
-input[type="submit"]:hover {
+.btn:hover {
   background: rgba(0, 255, 224, 0.12);
   transform: translateY(-2px);
   box-shadow: 0 0 22px rgba(0, 255, 224, 0.75);
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.25rem;
-  text-decoration: none;
-  cursor: pointer;
-}
+/* ===============================
+   GLOBAL SCROLL BUTTON
+   Ceremonial scroll / form buttons
+   =============================== */
 
 .scroll-btn {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
   border: 2px solid #00ffe0;
+  border-radius: 10px;
   background: rgba(10, 10, 25, 0.9);
   color: #00ffe0;
+  font-family: "Cinzel", serif;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
   box-shadow: 0 0 12px rgba(0, 255, 224, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.scroll-btn:hover {
+  background: rgba(0, 255, 224, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(0, 255, 224, 0.75);
 }
