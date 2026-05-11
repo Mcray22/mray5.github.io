@@ -229,3 +229,38 @@
     font-size: 1rem;
   }
 }
+
+/* ===============================
+   MOBILE NAVIGATION
+   =============================== */
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #00ffe0;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+  }
+}

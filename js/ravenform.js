@@ -36,3 +36,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 4200);
   });
 });
+
+
+  // ========================================
+  // SEND A RAVEN PAGE
+  // PURPOSE: Reserved for future scroll/raven animation hooks
+  // ========================================
+  const ravenForm = document.getElementById("contact-form");
+  const scrollShell = document.getElementById("scroll-shell");
+  const ravenFlight = document.getElementById("raven-flight");
+  const ravenConfirmation = document.getElementById("raven-confirmation");
+
+  if (ravenForm && scrollShell) {
+    ravenForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      // Placeholder for future animation sequence
+      console.log("Raven animation hook ready.");
+    });
+  }
