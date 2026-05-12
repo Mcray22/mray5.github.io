@@ -129,3 +129,38 @@
   margin: 0 auto;
 }
 
+/* ========================================
+   CART NOTIFICATION
+======================================== */
+
+.cart-notification {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+
+  background: rgba(20, 25, 20, 0.95);
+  color: #00ffe0;
+
+  border: 2px solid #00ffe0;
+  border-radius: 10px;
+
+  padding: 1rem 1.4rem;
+
+  font-weight: bold;
+
+  box-shadow: 0 0 15px rgba(0,255,200,0.35);
+
+  opacity: 0;
+  transform: translateY(-20px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+  z-index: 9999;
+}
+
+.cart-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}

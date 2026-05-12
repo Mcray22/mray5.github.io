@@ -72,4 +72,38 @@ function addToCart(productId) {
     }
 
     saveCart(cart);
+
+    showCartNotification(productId); // this has to be added in to make sure that the notification will show up when the user clicks the add to cart button
 }
+
+// ========================================
+// CART NOTIFICATION
+// Displays a temporary message when
+// an item is added to the cart
+// ========================================
+
+function showCartNotification(productId) {
+  const product = findProduct(productId);
+  const notification = document.createElement("div");
+
+  notification.className = "cart-notification";
+
+  notification.textContent = `${product.name} added to satchel!`;
+
+  document.body.appendChild(notification);
+
+  // slight delay for animation
+  setTimeout(() => {
+    notification.classList.add("show");
+  }, 50);
+
+  // remove notification
+  setTimeout(() => {
+    notification.classList.remove("show");
+
+    setTimeout(() => {
+      notification.remove();
+    }, 300);
+  }, 2500);
+}
+

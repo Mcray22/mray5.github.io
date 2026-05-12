@@ -33,7 +33,11 @@
 
     <main class="container shipping-layout">
       <section class="shipping-card">
-        <h2>Delivery Scroll</h2>
+        <h1>Dispatch Details</h1>
+        <p class="shipping-intro">
+          Enter your delivery information so the Arcanium can prepare your order
+          for its journey.
+        </p>
         <form id="shipping-form">
           <label for="fullName">Adventurer Name</label>
           <input type="text" id="fullName" required />
@@ -53,9 +57,15 @@
           <label for="notes">Raven's Instructions</label>
           <textarea id="notes" rows="4"></textarea>
 
-          <button type="submit" class="action-button primary-button">
-            Dispatch Simulated Order
-          </button>
+          <div class="shipping-actions">
+            <a href="cart.html" class="action-button secondary-button"
+              >Return to Satchel</a
+            >
+
+            <button type="submit" class="action-button primary-button">
+              Confirm Dispatch
+            </button>
+          </div>
         </form>
 
         <div id="shipping-message"></div>

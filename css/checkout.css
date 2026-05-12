@@ -41,6 +41,7 @@
 
 /* ===== HEADINGS ===== */
 
+.shipping-card h1,
 .shipping-card h2,
 .summary-card h2 {
   color: #00ffe0;
@@ -76,46 +77,45 @@
   box-shadow: 0 0 8px rgba(0,255,200,0.4);
 }
 
-/* ===== BUTTON ===== */
+/* ===== BUTTONS ===== */
 
-.primary-button {
-  display: block;
+.shipping-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
   margin-top: 1.5rem;
-  margin-left: auto;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-block;
   padding: 0.8rem 1.4rem;
   border-radius: 8px;
-  background: #6b4638;
-  color: #fff7d6;
-  border: 2px solid #b98b73;
   font-weight: bold;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.2s ease;
 }
 
-.primary-button:hover {
+.primary-button {
+  background: #6b4638;
+  color: #fff7d6;
+  border: 2px solid #b98b73;
+}
+
+.secondary-button {
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff7d6;
+  border: 2px solid #00ffe0;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
   transform: scale(1.05);
   box-shadow:
     0 0 8px rgba(0,255,200,0.6),
     0 0 16px rgba(0,255,200,0.4),
     0 0 24px rgba(0,255,200,0.2);
   color: #00ffe0;
-}
-
-
-/* ===== SUMMARY ===== */
-
-#shipping-summary p {
-  margin: 0.4rem 0;
-  color: #fff7d6;
-}
-
-@media (max-width: 768px) {
-  .shipping-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .summary-card {
-    position: static;
-    margin-top: 2rem;
-  }
 }

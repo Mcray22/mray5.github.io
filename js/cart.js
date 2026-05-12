@@ -72,3 +72,4 @@ function removeItem(index) {
     saveCart(cart);
     displayCartPage();
 }
+
