@@ -1,89 +1,86 @@
+"use strict";
+
 /* =====================================================
    FILE: js/event-map.js
    PURPOSE: Controls the interactive event map on the
             Events page using the Google Maps API.
 
             This file demonstrates JavaScript working
-            with an external API to dynamically create
-            and customize a live map.
+            with an external API to display a live,
+            styled map instead of a static image.
 ===================================================== */
 
 
 /* =====================================================
-   INITIALIZE MAP
-   Creates the map object and sets the starting
-   location and zoom level.
+   INITIALIZE EVENT MAP
+   This function is called by the Google Maps API callback
+   in events.html.
+
+   IMPORTANT:
+   The function name must match the callback name:
+   callback=initEventMap
 ===================================================== */
 
-function initMap() {
-
-  // Main event location coordinates
-  const tavernLocation = {
-    lat: 35.2220,
-    lng: -101.8313
+function initEventMap() {
+  const location = {
+    lat: 32.7767,
+    lng: -96.7970
   };
+
+    /* ===================================================
+     EVENT LOCATION DATA
+     Stores the latitude and longitude for the map marker.
+     Keeping the location in a variable makes it reusable
+     for both the map center and the marker position.
+  =================================================== */
+
+  // your existing location variable/code stays here
 
 
   /* ===================================================
-     CREATE MAP
+     CREATE GOOGLE MAP
      JavaScript connects to the Google Maps API and
-     renders the map inside the HTML container.
+     renders the map inside the #event-map HTML element.
   =================================================== */
 
+  // your existing map creation code stays here
+
+
+  /* ===================================================
+     CUSTOM MAP STYLING
+     These style settings help the map match the
+     Sword & Board neon gothic/fantasy theme.
+  =================================================== */
+
+  // your existing styles array/code stays here
+
+
+  /* ===================================================
+     MAP MARKER
+     Places a marker on the map to show the event location.
+  =================================================== */
+  
   const map = new google.maps.Map(
     document.getElementById("event-map"),
     {
       zoom: 13,
-      center: tavernLocation,
-
-      // Optional map controls
-      mapTypeControl: false,
-      streetViewControl: false
+      center: location,
+      styles: [
+        {
+          elementType: "geometry",
+          stylers: [{ color: "#1b1b1b" }]
+        },
+        {
+          elementType: "labels.text.fill",
+          stylers: [{ color: "#00ffe0" }]
+        }
+      ]
     }
   );
 
-
-  /* ===================================================
-     CREATE LOCATION MARKER
-     Places a marker at the event location.
-  =================================================== */
-
-  const marker = new google.maps.Marker({
-    position: tavernLocation,
+  new google.maps.Marker({
+    position: location,
     map: map,
-    title: "Sword & Board Tavern"
+    title: "Sword & Board Gathering Hall"
   });
-
-
-  /* ===================================================
-     INFORMATION WINDOW
-     Displays additional information when the marker
-     is clicked by the user.
-  =================================================== */
-
-  const infoWindow = new google.maps.InfoWindow({
-    content: `
-      <div class="map-popup">
-        <h3>Sword & Board Tavern</h3>
-        <p>Gather here for events, quests, and adventures.</p>
-      </div>
-    `
-  });
-
-
-  /* ===================================================
-     MARKER INTERACTION
-     Opens the information window when the marker
-     is clicked.
-  =================================================== */
-
-  marker.addListener("click", () => {
-
-    infoWindow.open({
-      anchor: marker,
-      map,
-    });
-
-  });
-
 }
