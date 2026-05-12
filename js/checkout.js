@@ -1,29 +1,130 @@
+/* =====================================================
+   FILE: js/checkout.js
+   PURPOSE: Controls the checkout and shipping page,
+            displays the order summary, and handles
+            simulated order submission.
+===================================================== */
+
+
+/* =====================================================
+   INITIALIZE SHIPPING PAGE
+   Runs when the checkout page loads and prepares
+   the page functionality.
+===================================================== */
+
 function initShippingPage() {
-    displayShippingPage();
-    const form = document.getElementById('shipping-form');
-    if (form) form.addEventListener('submit', submitShippingForm);
+
+  displayOrderSummary();
+  setupShippingForm();
+
 }
 
-function displayShippingPage() {
-    const summaryBox = document.getElementById('shipping-summary');
-    if (!summaryBox) return;
 
-    const cart = getCart();
-    let html = cart.map(item => `
-        <div class="summary-line">
-            <span>${item.name} (${item.size}, ${item.color}) x ${item.quantity}</span>
-            <span>$${(item.price * item.quantity).toFixed(2)}</span>
-        </div>`).join('');
+/* =====================================================
+   DISPLAY ORDER SUMMARY
+   Reads cart data and dynamically creates the
+   checkout summary displayed on the page.
+===================================================== */
 
-    html += `<div class="summary-line"><strong>Total</strong><strong>$${getCartTotal(cart).toFixed(2)}</strong></div>`;
-    summaryBox.innerHTML = html;
+function displayOrderSummary() {
+
+  const summaryContainer =
+    document.getElementById("shipping-summary");
+
+  // Safety check
+  if (!summaryContainer) return;
+
+  const cart = getCart();
+
+  let html = "";
+  let total = 0;
+
+
+  /* ===================================================
+     BUILD SUMMARY ITEMS
+     Creates display information for each cart item.
+  =================================================== */
+
+  cart.forEach((item) => {
+
+    const itemTotal = item.price * item.quantity;
+
+    total += itemTotal;
+
+    html += `
+      <p>
+        ${item.name}
+        (${item.color} / ${item.size})
+        × ${item.quantity}
+      </p>
+
+      <p>$${itemTotal.toFixed(2)}</p>
+
+      <hr>
+    `;
+  });
+
+
+  /* ===================================================
+     DISPLAY FINAL TOTAL
+  =================================================== */
+
+  html += `
+    <h3>Total: $${total.toFixed(2)}</h3>
+  `;
+
+  summaryContainer.innerHTML = html;
 }
 
-function submitShippingForm(event) {
+
+/* =====================================================
+   SHIPPING FORM SETUP
+   Handles the shipping form submission process.
+===================================================== */
+
+function setupShippingForm() {
+
+  const shippingForm =
+    document.getElementById("shipping-form");
+
+  const shippingMessage =
+    document.getElementById("shipping-message");
+
+  // Safety check
+  if (!shippingForm || !shippingMessage) return;
+
+
+  /* ===================================================
+     FORM SUBMISSION EVENT
+     Prevents page refresh and simulates order dispatch.
+  =================================================== */
+
+  shippingForm.addEventListener("submit", (event) => {
+
     event.preventDefault();
-    const fullName = document.getElementById('fullName').value;
-    document.getElementById('shipping-message').innerHTML = `<div class="message-box">Order placed for ${fullName}!</div>`;
-    localStorage.removeItem('cart');
-    event.target.reset();
-    displayShippingPage();
+
+
+    /* ===============================================
+       CONFIRMATION MESSAGE
+       Displays successful dispatch feedback.
+    =============================================== */
+
+    shippingMessage.innerHTML = `
+      <p class="success-message">
+        Your order has been dispatched successfully!
+      </p>
+    `;
+
+
+    /* ===============================================
+       CLEAR CART DATA
+       Removes cart data after successful checkout.
+    =============================================== */
+
+    clearCart();
+
+    shippingForm.reset();
+
+  });
+
 }

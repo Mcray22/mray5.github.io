@@ -67,37 +67,59 @@ const products = [
 }
 ];
 
+
+/* =====================================================
+   FILE: js/cart-data.js
+   PURPOSE: Handles cart storage and retrieval using
+            browser localStorage.
+
+            This file acts as the shared data system
+            for the store, cart, and checkout pages.
+===================================================== */
+
+
+/* =====================================================
+   GET CART
+   Retrieves saved cart data from localStorage.
+
+   If no cart data exists yet, JavaScript returns
+   an empty array instead.
+===================================================== */
+
 function getCart() {
-    const cartText = localStorage.getItem('cart');
-    return cartText ? JSON.parse(cartText) : [];
+
+  return JSON.parse(
+    localStorage.getItem("cart")
+  ) || [];
+
 }
+
+
+/* =====================================================
+   SAVE CART
+   Converts cart data into JSON format and stores it
+   inside browser localStorage.
+
+   This allows cart data to persist between pages.
+===================================================== */
 
 function saveCart(cart) {
-    localStorage.setItem('cart', JSON.stringify(cart));
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+  );
+
 }
 
-function findProduct(productId) {
-    return products.find(p => p.id === productId);
-}
 
-function getCartTotal(cart) {
-    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-}
+/* =====================================================
+   CLEAR CART
+   Completely removes cart data from localStorage.
+===================================================== */
 
-function buildSelect(options, id, selectedValue) {
-    let html = `<select id="${id}">`;
-    options.forEach(opt => {
-        const selected = String(opt) === String(selectedValue) ? 'selected' : '';
-        html += `<option value="${opt}" ${selected}>${opt}</option>`;
-    });
-    return html + '</select>';
-}
+function clearCart() {
 
-function buildCartSelect(options, selectedValue, index, fieldName) {
-    let html = `<select onchange="changeOption(${index}, '${fieldName}', this.value)">`;
-    options.forEach(opt => {
-        const selected = String(opt) === String(selectedValue) ? 'selected' : '';
-        html += `<option value="${opt}" ${selected}>${opt}</option>`;
-    });
-    return html + '</select>';
+  localStorage.removeItem("cart");
+
 }

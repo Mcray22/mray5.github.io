@@ -1,88 +1,215 @@
-  // ========================================
-  // CALCULATOR PAGE
-  // PURPOSE: Calculate room total based on dates,
-  // guests, season, upgrades, discounts, and tax
-  // ========================================
-  const calculatorForm = document.getElementById("calculator-form");
+/* =====================================================
+   FILE: js/calculator.js
+   PURPOSE: Handles the Quest Cost Calculator page by
+            calculating stay costs, guest fees, seasonal
+            pricing, package upgrades, discounts, and tax.
+===================================================== */
 
-  if (calculatorForm) {
-    calculatorForm.addEventListener("submit", (event) => {
-      event.preventDefault();
 
-      // ===== GET USER INPUT VALUES =====
-      const roomPrice = parseFloat(document.getElementById("room").value);
-      const checkin = new Date(document.getElementById("checkin").value);
-      const checkout = new Date(document.getElementById("checkout").value);
-      const guests = parseInt(document.getElementById("guests").value, 10) || 0;
-      const discountCode = document.getElementById("discount").value.trim().toUpperCase();
-      const weekendUpgrade = document.getElementById("weekendUpgrade").checked;
+/* =====================================================
+   PAGE SETUP
+   Waits for the calculator form to be submitted.
+===================================================== */
 
-      // ===== CALCULATE LENGTH OF STAY =====
-      const millisecondsPerDay = 1000 * 60 * 60 * 24;
-      const nights = Math.ceil((checkout - checkin) / millisecondsPerDay);
+document.addEventListener("DOMContentLoaded", () => {
 
-      if (isNaN(checkin.getTime()) || isNaN(checkout.getTime()) || nights <= 0) {
-        alert("Please choose a valid arrival and departure date.");
-        return;
-      }
+  const calculatorForm =
+    document.getElementById("calculator-form");
 
-      // ===== BASE COST CALCULATIONS =====
-      const roomSubtotal = roomPrice * nights;
-      const guestFee = guests * 20 * nights;
+  // Safety check
+  if (!calculatorForm) return;
 
-      // ===== SEASONAL PRICING =====
-      let seasonFee = 0;
-      const checkinMonth = checkin.getMonth() + 1;
 
-      if (checkinMonth === 6 || checkinMonth === 7 || checkinMonth === 12) {
-        seasonFee = 35 * nights;
-      }
+  /* ===================================================
+     FORM SUBMISSION EVENT
+     Prevents page refresh and calculates totals.
+  =================================================== */
 
-      // ===== OPTIONAL ADD-ONS =====
-      const packageFee = weekendUpgrade ? 50 : 0;
+  calculatorForm.addEventListener("submit", (event) => {
 
-      // ===== SUBTOTAL BEFORE DISCOUNT =====
-      const subtotal = roomSubtotal + guestFee + seasonFee + packageFee;
+    event.preventDefault();
 
-      // ===== DISCOUNTS =====
-      let discountAmount = 0;
+    calculateQuestCost();
 
-      if (discountCode === "DRAGON10") {
-        discountAmount = subtotal * 0.10;
-      } else if (discountCode === "GUILD20") {
-        discountAmount = subtotal * 0.20;
-      }
+  });
 
-      // ===== TAX CALCULATION =====
-      const taxedAmount = subtotal - discountAmount;
-      const taxAmount = taxedAmount * 0.0825;
-      const grandTotal = taxedAmount + taxAmount;
+});
 
-      // ===== DISPLAY RESULTS =====
-      document.getElementById("stayNights").textContent =
-        `Length of stay: ${nights} night(s)`;
 
-      document.getElementById("roomSubtotal").textContent =
-        `Room cost: ${roomSubtotal.toFixed(2)} USD`;
+/* =====================================================
+   CALCULATE QUEST COST
+   Main pricing calculator for the stay booking system.
+===================================================== */
 
-      document.getElementById("guestFee").textContent =
-        `Extra guest fee: ${guestFee.toFixed(2)} USD`;
+function calculateQuestCost() {
 
-      document.getElementById("seasonFee").textContent =
-        `Seasonal fee: ${seasonFee.toFixed(2)} USD`;
+  /* ===================================================
+     GET USER INPUTS
+  =================================================== */
 
-      document.getElementById("packageFee").textContent =
-        `Feast package: ${packageFee.toFixed(2)} USD`;
+  const roomRate =
+    parseFloat(document.getElementById("room").value);
 
-      document.getElementById("discountAmount").textContent =
-        `Discount: -${discountAmount.toFixed(2)} USD`;
+  const checkin =
+    new Date(document.getElementById("checkin").value);
 
-      document.getElementById("taxAmount").textContent =
-        `Tax: ${taxAmount.toFixed(2)} USD`;
+  const checkout =
+    new Date(document.getElementById("checkout").value);
 
-      document.getElementById("grandTotal").textContent =
-        `Grand Total: ${grandTotal.toFixed(2)} USD`;
+  const extraGuests =
+    parseInt(document.getElementById("guests").value) || 0;
 
-      document.getElementById("result").classList.remove("hidden");
-    });
+  const discountCode =
+    document.getElementById("discount").value.trim();
+
+  const weekendUpgrade =
+    document.getElementById("weekendUpgrade").checked;
+
+
+  /* ===================================================
+     DATE CALCULATIONS
+     Calculates total nights stayed.
+  =================================================== */
+
+  const millisecondsPerDay =
+    1000 * 60 * 60 * 24;
+
+  const stayNights =
+    Math.ceil((checkout - checkin) / millisecondsPerDay);
+
+
+  /* ===================================================
+     INPUT VALIDATION
+  =================================================== */
+
+  if (stayNights <= 0 || isNaN(stayNights)) {
+
+    alert("Please select valid travel dates.");
+
+    return;
   }
+
+
+  /* ===================================================
+     BASE ROOM COST
+  =================================================== */
+
+  const roomSubtotal =
+    roomRate * stayNights;
+
+
+  /* ===================================================
+     EXTRA GUEST FEES
+  =================================================== */
+
+  const guestFee =
+    extraGuests * 20 * stayNights;
+
+
+  /* ===================================================
+     SEASONAL FEE
+     Adds seasonal pricing during summer months.
+  =================================================== */
+
+  let seasonFee = 0;
+
+  const checkinMonth = checkin.getMonth();
+
+  if (
+    checkinMonth === 5 ||
+    checkinMonth === 6 ||
+    checkinMonth === 7
+  ) {
+    seasonFee = 75;
+  }
+
+
+  /* ===================================================
+     PACKAGE UPGRADE
+  =================================================== */
+
+  const packageFee =
+    weekendUpgrade ? 50 : 0;
+
+
+  /* ===================================================
+     DISCOUNT SYSTEM
+  =================================================== */
+
+  let discountAmount = 0;
+
+  if (discountCode.toUpperCase() === "DRAGON10") {
+
+    discountAmount =
+      (roomSubtotal + guestFee) * 0.10;
+  }
+
+
+  /* ===================================================
+     SUBTOTAL BEFORE TAX
+  =================================================== */
+
+  const subtotal =
+    roomSubtotal +
+    guestFee +
+    seasonFee +
+    packageFee -
+    discountAmount;
+
+
+  /* ===================================================
+     TAX CALCULATION
+  =================================================== */
+
+  const taxAmount =
+    subtotal * 0.0825;
+
+
+  /* ===================================================
+     FINAL TOTAL
+  =================================================== */
+
+  const grandTotal =
+    subtotal + taxAmount;
+
+
+  /* ===================================================
+     DISPLAY RESULTS
+     Updates the result panel dynamically.
+  =================================================== */
+
+  document.getElementById("result")
+    .classList.remove("hidden");
+
+  document.getElementById("stayNights")
+    .textContent =
+      `Length of Stay: ${stayNights} night(s)`;
+
+  document.getElementById("roomSubtotal")
+    .textContent =
+      `Room Cost: $${roomSubtotal.toFixed(2)}`;
+
+  document.getElementById("guestFee")
+    .textContent =
+      `Guest Fees: $${guestFee.toFixed(2)}`;
+
+  document.getElementById("seasonFee")
+    .textContent =
+      `Seasonal Fee: $${seasonFee.toFixed(2)}`;
+
+  document.getElementById("packageFee")
+    .textContent =
+      `Package Upgrade: $${packageFee.toFixed(2)}`;
+
+  document.getElementById("discountAmount")
+    .textContent =
+      `Discount: -$${discountAmount.toFixed(2)}`;
+
+  document.getElementById("taxAmount")
+    .textContent =
+      `Tax: $${taxAmount.toFixed(2)}`;
+
+  document.getElementById("grandTotal")
+    .textContent =
+      `Grand Total: $${grandTotal.toFixed(2)}`;
+}

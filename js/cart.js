@@ -1,75 +1,131 @@
+/* =====================================================
+   FILE: js/cart.js
+   PURPOSE: Controls the shopping cart page by displaying
+            cart items, calculating totals, and allowing
+            users to remove items from the cart.
+===================================================== */
+
+
+/* =====================================================
+   DISPLAY CART PAGE
+   Reads cart data and dynamically builds the cart page.
+===================================================== */
+
 function displayCartPage() {
-    const cartArea = document.getElementById('cart-area');
-    if (!cartArea) return;
 
-    const cart = getCart();
+  const cartArea = document.getElementById("cart-area");
 
-    if (cart.length === 0) {
-        cartArea.innerHTML = '<div class="empty-cart"><h2>Your cart is empty.</h2></div>';
-        return;
-    }
+  // Safety check
+  if (!cartArea) return;
 
-    let html = '<div class="cart-card"><h2>Items in Cart</h2>';
+  const cart = getCart();
 
-    cart.forEach((item, i) => {
-        const product = findProduct(item.productId);
 
-        html += `<div class="cart-row">
-            <img src="${item.image}" alt="${item.alt}" class="cart-item-img">
+  /* ===================================================
+     EMPTY CART CHECK
+     Displays a message if the cart is empty.
+  =================================================== */
 
-            <div>
-                <div class="cart-item-title">${item.name}</div>
-                <div>$${item.price.toFixed(2)} each</div>
-            </div>
+  if (cart.length === 0) {
 
-            <div>
-                <label>Color</label>
-                ${buildCartSelect(product.colors, item.color, i, 'color')}
-            </div>
+    cartArea.innerHTML = `
+      <div class="empty-cart">
+        <h2>Your satchel is empty.</h2>
+        <p>Visit the Arcanium to gather supplies.</p>
+      </div>
+    `;
 
-            <div>
-                <label>Size</label>
-                ${buildCartSelect(product.sizes, item.size, i, 'size')}
-            </div>
+    return;
+  }
 
-            <div>
-                <label>Qty</label>
-                ${buildCartSelect(product.quantities, item.quantity, i, 'quantity')}
-            </div>
+  let html = "";
+  let total = 0;
 
-            <div>
-                <label>Total</label>
-                <div>$${(item.price * item.quantity).toFixed(2)}</div>
-            </div>
 
-            <button class="remove-button" onclick="removeItem(${i})">Remove</button>
-        </div>`;
-    });
+  /* ===================================================
+     BUILD CART ITEMS
+     JavaScript dynamically creates a card for each
+     saved cart item.
+  =================================================== */
 
-    html += `</div>
-        <div class="total-box">
-            <h2>Total: $${getCartTotal(cart).toFixed(2)}</h2>
-            <a class="action-button primary-button" href="checkout.html">Proceed to Dispatch</a>
-        </div>`;
+  cart.forEach((item, index) => {
 
-    cartArea.innerHTML = html;
+    const itemTotal = item.price * item.quantity;
+
+    total += itemTotal;
+
+    html += `
+      <div class="cart-card">
+
+        <img
+          src="${item.image}"
+          alt="${item.alt}"
+          class="cart-item-img"
+        >
+
+        <h2 class="cart-item-title">
+          ${item.name}
+        </h2>
+
+        <p class="cart-row">
+          Color: ${item.color}
+        </p>
+
+        <p class="cart-row">
+          Size: ${item.size}
+        </p>
+
+        <p class="cart-row">
+          Quantity: ${item.quantity}
+        </p>
+
+        <p class="cart-row">
+          Price: $${item.price.toFixed(2)}
+        </p>
+
+        <p class="cart-row">
+          Item Total: $${itemTotal.toFixed(2)}
+        </p>
+
+        <button
+          class="remove-button"
+          onclick="removeCartItem(${index})"
+        >
+          Remove Item
+        </button>
+
+      </div>
+    `;
+  });
+
+
+  /* ===================================================
+     DISPLAY FINAL TOTAL
+  =================================================== */
+
+  html += `
+    <div class="total-box">
+      <h2>Total: $${total.toFixed(2)}</h2>
+    </div>
+  `;
+
+  cartArea.innerHTML = html;
 }
 
-function changeOption(index, fieldName, value) {
-    const cart = getCart();
 
-    cart[index][fieldName] = fieldName === 'quantity' ? parseInt(value) : value;
+/* =====================================================
+   REMOVE CART ITEM
+   Removes a selected item from the cart array and
+   refreshes the cart display.
+===================================================== */
 
-    saveCart(cart);
-    displayCartPage();
+function removeCartItem(index) {
+
+  let cart = getCart();
+
+  cart.splice(index, 1);
+
+  saveCart(cart);
+
+  displayCartPage();
 }
-
-function removeItem(index) {
-    const cart = getCart();
-
-    cart.splice(index, 1);
-
-    saveCart(cart);
-    displayCartPage();
-}
-
